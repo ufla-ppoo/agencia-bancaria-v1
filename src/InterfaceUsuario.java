@@ -25,13 +25,13 @@ public class InterfaceUsuario {
     }
 
     private int exibirMenu() {
-        System.out.println("Bem-vindo à agência " + agencia.getNome() + "!\n");
+        System.out.println("Bem-vindo a agencia " + agencia.getNome() + "!\n");
         System.out.println(
                 "1 - Criar conta\n" +
-                "2 - Relatório\n" +
-                "3 - Depósito\n" +
+                "2 - Relatorio\n" +
+                "3 - Deposito\n" +
                 "4 - Saque\n" +
-                "5 - Transferência\n" +
+                "5 - Transferencia\n" +
                 "6 - Sair\n" );
         System.out.print("Digite sua opcao: ");
         return Integer.parseInt(entrada.nextLine());
@@ -99,12 +99,11 @@ public class InterfaceUsuario {
     }
 
     private void fazerDeposito() {		
-        try {
-            agencia.depositar(pedirConta(), pedirValor());
+        if (agencia.depositar(pedirConta(), pedirValor())) {
             System.out.println("Deposito realizado com sucesso!");
         }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
+        else {
+            System.out.println("Não foi possível depositar!");
         }
     }
 
@@ -122,7 +121,7 @@ public class InterfaceUsuario {
             System.out.println("Transferencia realizada com sucesso!");		
         }
         else {
-            System.out.println("Não foi possível transferir!");
+            System.out.println("Nao foi possivel transferir!");
         }
     }
 }
